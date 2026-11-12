@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10110f">
+  <title>Watch video · Frame</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/watch.css">
+  <script src="./js/watch.js" defer></script>
+</head>
+<body class="watch-body">
+  <header class="watch-topbar">
+    <a class="brand watch-brand" href="/" aria-label="Frame home"><span class="brand-mark">f</span><span>frame<span class="brand-dot">.</span></span></a>
+    <a class="watch-back" href="/#discover">Explore videos <span>↗</span></a>
+    <button class="button button-small button-dark" id="watchAccountButton" type="button">Sign in</button>
+  </header>
+
+  <main class="watch-layout">
+    <section class="watch-main">
+      <div class="watch-video-frame"><video id="watchVideo" controls playsinline preload="metadata"></video><div class="watch-video-error hidden" id="videoError"></div></div>
+      <div class="watch-title-row"><h1 id="videoTitle">Loading video…</h1><div class="watch-more-wrap"><button class="watch-more-button" id="moreButton" type="button" aria-label="More video options" aria-expanded="false">⋮</button><div class="watch-more-menu hidden" id="moreMenu"><button type="button" id="copyVideoLink">Copy video link</button><button type="button" id="reportVideoButton" class="hidden">Report video</button><button type="button" id="reportCreatorButton" class="hidden">Report creator</button><a href="/#discover">Back to feed</a><a class="hidden" id="manageVideoLink" href="/?dashboard=1">Manage video</a></div></div></div>
+      <div class="watch-channel-actions">
+        <div class="watch-channel"><a class="watch-creator-link" id="creatorProfileLink" href="#"><span class="watch-avatar" id="creatorAvatar">F</span><span class="watch-channel-copy"><strong id="creatorName">Frame creator</strong><small id="subscriberCount">0 subscribers</small></span></a><button class="button button-dark watch-subscribe hidden" id="subscribeButton" type="button">Subscribe</button><span class="watch-owner-label hidden" id="ownerLabel">Your video</span></div>
+        <div class="watch-actions">
+          <div class="watch-reaction-group"><button class="watch-action" id="likeButton" type="button" aria-label="Like video">👍 <span id="likeCount">0</span></button><span class="watch-action-divider"></span><button class="watch-action watch-icon-action" id="dislikeButton" type="button" aria-label="Dislike video">👎</button></div>
+          <button class="watch-action" id="shareButton" type="button">↗ <span>Share</span></button>
+          <a class="watch-action" id="downloadButton" href="#" download>↓ <span>Download</span></a>
+          <button class="watch-action" id="watchLaterButton" type="button">▣ <span>Watch later</span></button>
+        </div>
+      </div>
+
+      <section class="watch-description" aria-label="Video description">
+        <div class="watch-video-stats"><strong id="viewCount">0 views</strong><span id="publishedAt">Recently uploaded</span><span class="watch-dislike-count" id="dislikeCount">0 dislikes</span></div>
+        <p id="videoDescription"></p>
+        <div class="watch-tags" id="videoTags"></div>
+      </section>
+
+      <section class="comments-section" aria-labelledby="commentsHeading">
+        <div class="comments-header"><div><h2 id="commentsHeading">Comments</h2><span id="commentsCount">Loading…</span></div><label class="comment-sort">Sort by<select id="commentSort" aria-label="Sort comments"><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select></label></div>
+        <div class="comments-settings hidden" id="commentsSettings"><span>Comments on this video</span><button class="settings-switch" type="button" id="commentsToggle" aria-pressed="true"><span></span><b id="commentsToggleText">On</b></button></div>
+        <form class="comment-composer" id="commentForm"><span class="watch-avatar comment-avatar" id="viewerAvatar">?</span><div class="comment-compose-fields"><textarea id="commentInput" maxlength="1500" rows="2" placeholder="Add a comment…" required></textarea><div class="comment-compose-actions"><span id="commentFormMessage"></span><button class="button button-dark button-small" type="submit" id="postCommentButton">Comment</button></div></div></form>
+        <div class="comment-signin hidden" id="commentSignin">Sign in to join the conversation. <button type="button" id="commentSigninButton">Sign in</button></div>
+        <div class="comments-disabled hidden" id="commentsDisabled">Comments are turned off for this video.</div>
+        <div class="comment-list" id="commentList"><div class="comment-loading">Loading comments…</div></div>
+      </section>
+    </section>
+
+    <aside class="watch-sidebar"><div class="watch-sidebar-heading"><span class="watch-sidebar-eyebrow">KEEP EXPLORING</span><h2>Up next</h2></div><div class="related-videos" id="relatedVideos"><div class="comment-loading">Finding more videos…</div></div></aside>
+  </main>
+
+  <div class="app-toast hidden" id="watchToast" role="status" aria-live="polite"></div>
+</body>
+</html>

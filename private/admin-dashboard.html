@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin dashboard · Frame</title>
+  <link rel="stylesheet" href="/css/admin.css">
+  <script src="/js/admin-dashboard.js" defer></script>
+</head>
+<body class="admin-body admin-dashboard-body">
+  <header class="admin-topbar">
+    <a class="admin-brand" href="/admin"><span class="admin-brand-mark">F</span> Frame <small>ADMIN</small></a>
+    <div class="admin-top-actions"><a href="/" target="_blank" rel="noopener">View website ↗</a><button id="adminLogout" class="admin-logout" type="button">Sign out</button></div>
+  </header>
+  <main class="admin-main">
+    <div class="admin-kicker">CONTROL ROOM</div>
+    <h1>Admin dashboard.</h1>
+    <p class="admin-intro">Manage accounts, review uploads, and moderate the Frame community.</p>
+    <div id="adminLoadError" class="admin-error" role="alert"></div>
+    <section class="admin-stats" aria-label="Platform totals">
+      <article class="admin-stat"><span>Registered users</span><strong id="adminUsers">—</strong></article>
+      <article class="admin-stat"><span>Active now · 5 min</span><strong id="adminActiveUsers">—</strong></article>
+      <article class="admin-stat"><span>Uploaded videos</span><strong id="adminVideos">—</strong></article>
+      <article class="admin-stat"><span>Comments</span><strong id="adminComments">—</strong></article>
+      <article class="admin-stat"><span>Suspended accounts</span><strong id="adminSuspended">—</strong></article>
+      <article class="admin-stat"><span>Limited accounts</span><strong id="adminLimited">—</strong></article>
+      <article class="admin-stat"><span>Reports needing review</span><strong id="adminOpenReports">—</strong></article>
+    </section>
+    <section class="admin-management" aria-labelledby="analyticsHeading">
+      <div class="admin-section-heading admin-section-toolbar"><div><div class="admin-kicker">PLATFORM HEALTH</div><h2 id="analyticsHeading">Analytics</h2><p>Recent upload frequency, comments, and new account activity.</p></div><label class="admin-period">Period<select id="analyticsPeriod"><option value="7">7 days</option><option value="14" selected>14 days</option><option value="30">30 days</option></select></label></div>
+      <div class="admin-analytics-summary" id="analyticsSummary" aria-live="polite"></div>
+      <div id="analyticsChart" class="admin-chart" aria-label="Daily uploads, comments, and new user registrations"></div>
+    </section>
+    <section class="admin-management admin-system-card" aria-labelledby="systemHeading">
+      <div><div class="admin-kicker">LIVE CHECKS</div><h2 id="systemHeading">System status</h2><p id="systemCheckedAt">Checking backend, database, and upload storage…</p></div>
+      <div id="systemStatus" class="admin-system-status" role="status"><span class="admin-status-dot"></span><strong>Checking</strong></div>
+      <div id="systemDetails" class="admin-system-details"></div>
+    </section>
+    <section class="admin-management" aria-labelledby="recentUsersHeading">
+      <div class="admin-section-heading"><div><div class="admin-kicker">NEW ACCOUNTS</div><h2 id="recentUsersHeading">Recently registered</h2><p>The latest accounts created on Frame. Open a profile to see its public page and, as admin, its moderated uploads.</p></div></div>
+      <div id="recentUserList" class="admin-list" aria-live="polite"><div class="admin-record-meta">Loading recent accounts…</div></div>
+      <div class="admin-list-footer"><span id="recentUserListStatus" aria-live="polite"></span></div>
+    </section>
+    <section class="admin-management" aria-labelledby="usersHeading">
+      <div class="admin-section-heading"><div><div class="admin-kicker">COMMUNITY</div><h2 id="usersHeading">User management</h2><p>Browse every account. Suspend access, limit posting and interactions, block uploads or comments, or permanently remove an account and its uploaded files.</p></div></div>
+      <div class="admin-search-row"><label class="admin-search-label" for="userSearch">Search users</label><input id="userSearch" type="search" placeholder="Name, email, or user ID"><button class="admin-button admin-search-button" id="userSearchButton" type="button">Search</button></div>
+      <div id="userList" class="admin-list" aria-live="polite"></div>
+      <div class="admin-list-footer"><span id="userListStatus"></span><button class="admin-button admin-more" id="userLoadMore" type="button" hidden>Load more users</button></div>
+    </section>
+    <section class="admin-management" aria-labelledby="videosHeading">
+      <div class="admin-section-heading"><div><div class="admin-kicker">CONTENT SAFETY</div><h2 id="videosHeading">Video moderation</h2><p>Browse every upload or filter by uploader. Public videos appear in feeds; hidden videos work by direct link; private videos are limited to their owner and admins.</p></div></div>
+      <div class="admin-search-row"><label class="admin-search-label" for="videoSearch">Search videos</label><input id="videoSearch" type="search" placeholder="Title, creator, or video ID"><label class="admin-search-label" for="videoCreatorFilter">Filter by uploader</label><select id="videoCreatorFilter" aria-label="Filter videos by uploader"><option value="">All uploaders</option></select><button class="admin-button admin-search-button" id="videoSearchButton" type="button">Show videos</button></div>
+      <div id="videoList" class="admin-list" aria-live="polite"></div>
+      <div class="admin-list-footer"><span id="videoListStatus"></span><button class="admin-button admin-more" id="videoLoadMore" type="button" hidden>Load more videos</button></div>
+    </section>
+    <section class="admin-management" aria-labelledby="commentsHeading">
+      <div class="admin-section-heading"><div><div class="admin-kicker">COMMENT REVIEW</div><h2 id="commentsHeading">Comment moderation</h2><p>Review comments across the platform, including comments that have been reported.</p></div></div>
+      <div class="admin-search-row"><label class="admin-search-label" for="commentSearch">Search comments</label><input id="commentSearch" type="search" placeholder="Comment, author, video, or comment ID"><button class="admin-button admin-search-button" id="commentSearchButton" type="button">Search</button></div>
+      <div id="commentList" class="admin-list" aria-live="polite"></div>
+      <div class="admin-list-footer"><span id="commentListStatus"></span><button class="admin-button admin-more" id="commentLoadMore" type="button" hidden>Load more comments</button></div>
+    </section>
+    <section class="admin-management" aria-labelledby="reportsHeading">
+      <div class="admin-section-heading admin-section-toolbar"><div><div class="admin-kicker">TRUST & SAFETY</div><h2 id="reportsHeading">Reports</h2><p>Review user-submitted reports for accounts, videos, and comments.</p></div><label class="admin-period">Queue<select id="reportStatusFilter"><option value="open">Open</option><option value="reviewing">Reviewing</option><option value="resolved">Resolved</option><option value="dismissed">Dismissed</option><option value="all">All reports</option></select></label></div>
+      <div id="reportList" class="admin-list" aria-live="polite"></div>
+      <div class="admin-list-footer"><span id="reportListStatus"></span><button class="admin-button admin-more" id="reportLoadMore" type="button" hidden>Load more reports</button></div>
+    </section>
+    <section class="admin-password-card">
+      <div class="admin-kicker">ACCOUNT SECURITY</div>
+      <h2>Change admin password</h2>
+      <p>Use a unique password with at least 20 characters. This change is saved to the account and remains after restarting the server.</p>
+      <form id="adminPasswordForm">
+        <label for="adminCurrentPassword">Current password</label>
+        <input id="adminCurrentPassword" name="currentPassword" type="password" autocomplete="current-password" required>
+        <label for="adminNewPassword">New password</label>
+        <input id="adminNewPassword" name="newPassword" type="password" autocomplete="new-password" minlength="20" required>
+        <label for="adminConfirmPassword">Confirm new password</label>
+        <input id="adminConfirmPassword" name="confirmPassword" type="password" autocomplete="new-password" minlength="20" required>
+        <div class="admin-error" id="adminPasswordError" role="alert"></div>
+        <button class="admin-button" type="submit">Update password</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

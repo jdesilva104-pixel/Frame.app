@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7f3">
+  <title>Creator profile · Frame</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/creator.css">
+  <script src="./js/creator.js" defer></script>
+</head>
+<body class="creator-page-body">
+  <header class="creator-topbar">
+    <a class="brand" href="/" aria-label="Frame home"><span class="brand-mark">f</span><span>frame<span class="brand-dot">.</span></span></a>
+    <a class="creator-back" href="/#discover">Explore videos <span>↗</span></a>
+    <button class="button button-small button-dark" id="creatorAccountButton" type="button">Sign in</button>
+  </header>
+  <main class="creator-layout">
+    <section class="creator-profile-card" id="creatorProfileCard">
+      <div class="creator-profile-avatar" id="creatorProfileAvatar">F</div>
+      <div class="creator-profile-copy"><div class="eyebrow">FRAME CREATOR</div><h1 id="creatorProfileName">Loading profile…</h1><p id="creatorBio"></p><div class="creator-stats"><span><strong id="creatorVideoCount">0</strong> videos</span><span><strong id="creatorSubscriberCount">0</strong> subscribers</span></div></div>
+      <div class="creator-profile-actions"><button class="button creator-subscribe hidden" id="creatorSubscribeButton" type="button">Subscribe</button><a class="button button-dark button-small hidden" id="creatorDashboardLink" href="/?dashboard=1">Your dashboard</a></div>
+    </section>
+    <section class="creator-videos-section"><div class="creator-section-heading"><div><div class="eyebrow">THEIR VIDEO LIBRARY</div><h2>Videos</h2></div><span id="creatorVideoCountLabel"></span></div><div class="creator-video-grid" id="creatorVideos"><div class="creator-loading">Loading videos…</div></div></section>
+  </main>
+  <div class="app-toast hidden" id="creatorToast" role="status" aria-live="polite"></div>
+</body>
+</html>

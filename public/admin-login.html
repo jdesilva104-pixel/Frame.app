@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin sign in · Frame</title>
+  <link rel="stylesheet" href="/css/admin.css">
+  <script src="/js/admin-login.js" defer></script>
+</head>
+<body class="admin-body">
+  <main class="admin-login-shell">
+    <a class="admin-brand" href="/"><span class="admin-brand-mark">F</span> Frame</a>
+    <section class="admin-card" aria-labelledby="admin-title">
+      <div class="admin-kicker">PRIVATE ADMIN AREA</div>
+      <h1 id="admin-title">Admin sign in.</h1>
+      <p>Use the administrator account configured for this Frame server.</p>
+      <form id="adminLoginForm">
+        <label for="adminEmail">Admin email</label>
+        <input id="adminEmail" name="email" type="email" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+        <label for="adminPassword">Password</label>
+        <input id="adminPassword" name="password" type="password" autocomplete="current-password" required>
+        <div class="admin-error" id="adminLoginError" role="alert"></div>
+        <button class="admin-button" type="submit">Sign in to admin</button>
+      </form>
+      <a class="admin-back-link" href="/">← Back to Frame</a>
+    </section>
+    <footer>Administrator access is restricted to approved accounts.</footer>
+  </main>
+</body>
+</html>

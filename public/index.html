@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10100f">
+  <meta name="description" content="A home for videos worth sharing.">
+  <title>Frame — stories in motion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="./js/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Frame home"><span class="brand-mark">f</span><span>frame<span class="brand-dot">.</span></span></a>
+    <nav class="account-actions" aria-label="Account">
+      <button class="text-button" data-open-auth="login">Sign in</button>
+      <button class="button button-small" data-open-auth="register">Create account <span>↗</span></button>
+      <div class="user-menu hidden" id="userMenu"><span id="userName"></span><button class="text-button" id="logoutButton">Sign out</button></div>
+    </nav>
+  </header>
+  <main id="top" class="home-view">
+    <section class="hero" id="homeTop">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot"></span> A little space for big stories</div>
+        <h1>Life looks better<br>in <em>motion.</em></h1>
+        <p>A calmer corner of the internet to share what you make, find a fresh point of view, and stay a little longer.</p>
+        <div class="hero-actions"><button class="button" data-open-auth="register">Start sharing <span>↗</span></button><a class="link-button" href="#discover">Explore videos <span>↓</span></a></div>
+        <div class="community-note"><div class="avatar-stack"><span>J</span><span>M</span><span>A</span><b>✳</b></div><span>Made for curious people<br><strong>and the things they notice.</strong></span></div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-frame"><video class="hero-video" autoplay muted loop playsinline poster="./media/mountain-dawn.jpg"><source src="./media/forest-aerial.mp4" type="video/mp4"></video><div class="video-shade"></div><div class="frame-topline"><span>FRAME / 001</span><span>01:24</span></div><div class="hero-caption"><span class="caption-label">THE OUTSIDE EDIT</span><h2>Somewhere<br>between here<br>and the horizon.</h2><div class="caption-foot"><span>by little moments</span><span class="play-badge">▶</span></div></div></div>
+        <div class="art-sticker">made to<br>be <i>felt</i> <span>✳</span></div>
+        <div class="art-coordinate">38° 32' 24.0" N<br>122° 48' 18.2" W</div>
+      </div>
+      <span class="hero-index">01 — 04</span>
+    </section>
+    <section class="discovery section-wrap" id="discover">
+      <div class="section-heading"><div><div class="eyebrow muted-eyebrow">A WORLD OF LITTLE MOMENTS</div><h2>Find your <em>next</em> favorite.</h2></div><div class="heading-note">Good things are happening<br>all over the place.</div></div>
+      <div class="filter-row"><div class="chips" id="topicChips"><button class="chip active" data-tag="">For you</button><button class="chip" data-tag="nature">Nature</button><button class="chip" data-tag="travel">Travel</button><button class="chip" data-tag="food">Food</button><button class="chip" data-tag="music">Music</button><button class="chip" data-tag="everyday">Everyday</button></div><form class="search-box" id="searchForm"><span>⌕</span><input id="searchInput" type="search" placeholder="Search videos, creators, tags" aria-label="Search videos"><kbd>↵</kbd></form></div>
+      <div class="video-grid" id="videoGrid"></div>
+      <div class="empty-state hidden" id="emptyState"><span>✳</span><h3>No videos just yet</h3><p>Be the first to put something in motion.</p><button class="button button-dark" data-open-auth="register">Share your first video <span>↗</span></button></div>
+      <div class="loading-state" id="loadingState">Finding lovely things…</div>
+      <div class="feed-pagination"><span class="hidden" id="feedLoadingMore">Loading more videos…</span><button class="button button-small hidden" id="loadMoreVideos" type="button">Load more videos</button></div>
+    </section>
+    <section class="invite-banner"><div class="invite-spark">✳</div><div><div class="eyebrow">YOUR VIEW OF THE WORLD</div><h2>Every story starts<br>with a <em>point of view.</em></h2></div><button class="button button-light" data-open-auth="register">Add yours <span>↗</span></button><span class="invite-orbit orbit-one"></span><span class="invite-orbit orbit-two"></span></section>
+  </main>
+  <main class="dashboard-page hidden" id="dashboardView">
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-section-label">YOUR CREATOR SPACE</div>
+      <button class="sidebar-link selected" type="button"><span>◫</span> Overview</button>
+      <button class="sidebar-link" type="button" data-library-view="videos"><span>▧</span> My videos</button>
+      <button class="sidebar-link" type="button" data-library-view="history"><span>◷</span> Watch history</button>
+      <button class="sidebar-link" type="button" data-library-view="liked"><span>♥</span> Liked videos</button>
+      <button class="sidebar-link" type="button" data-library-view="watchLater"><span>◴</span> Watch later</button>
+      <button class="sidebar-link" type="button" data-library-view="playlists"><span>☷</span> Playlists</button>
+      <div class="sidebar-divider"></div>
+      <button class="sidebar-link" type="button" data-library-view="settings"><span>⚙</span> Settings</button>
+      <button class="sidebar-link" type="button" id="exploreButton"><span>↗</span> Explore Frame</button>
+      <button class="sidebar-user" id="sidebarProfileButton" type="button" aria-label="Open profile and account settings"><span class="sidebar-avatar" id="sidebarAvatar">F</span><span><strong id="sidebarName">Creator</strong><small>Creator account</small><small class="sidebar-user-id" id="sidebarUserId">User ID</small></span></button>
+    </aside>
+    <section class="dashboard-main">
+      <div class="dashboard-page-heading"><div><div class="eyebrow">YOUR CREATOR DASHBOARD</div><h1>Good to have you back,<br><em id="dashboardName">creator</em>.</h1><p>Here’s what’s happening in your corner of Frame.</p></div><div class="dashboard-heading-actions"><div class="personal-menu-wrap"><button class="personal-menu-toggle" id="personalMenuToggle" type="button" aria-label="Open personal settings menu" aria-haspopup="menu" aria-expanded="false">⋮</button><div class="personal-menu hidden" id="personalMenu" role="menu" aria-label="Personal dashboard menu"><div class="personal-menu-title">YOUR FRAME</div><button type="button" role="menuitem" data-personal-view="settings">⚙ <span>Account settings</span></button><button type="button" role="menuitem" data-personal-view="videos">▧ <span>My videos</span></button><button type="button" role="menuitem" data-personal-view="playlists">☷ <span>Playlists</span></button><button type="button" role="menuitem" data-personal-view="history">◷ <span>Watch history</span></button><button type="button" role="menuitem" data-personal-view="liked">♥ <span>Liked videos</span></button><button type="button" role="menuitem" data-personal-view="watchLater">◴ <span>Watch later</span></button><div class="personal-menu-divider"></div><button type="button" role="menuitem" id="personalMenuLogout">↗ <span>Sign out</span></button></div></div><button class="button button-dark" id="dashboardUpload">＋ Upload a video <span>↗</span></button></div></div>
+      <section class="dashboard-profile-card" aria-label="Your profile">
+        <span class="dashboard-profile-avatar" id="dashboardProfileAvatar">F</span>
+        <div class="dashboard-profile-details"><strong id="dashboardProfileName">Creator</strong><span id="dashboardProfileEmail"></span><small id="dashboardProfileId">User ID</small></div>
+        <div class="dashboard-profile-actions"><a class="button button-small button-dark" id="dashboardPublicProfile" href="/creator.html">View public profile</a><button class="button button-small" id="editDashboardProfile" type="button">Edit profile</button></div>
+      </section>
+      <div class="dashboard-overview-cards">
+        <article class="overview-card"><span class="overview-icon">▧</span><span class="overview-label">PUBLISHED VIDEOS</span><strong id="dashboardCount">0</strong><small>Your videos, all in one place</small></article>
+        <article class="overview-card overview-note"><span class="overview-icon">✳</span><span class="overview-label">A NOTE FOR CREATORS</span><strong>Your point of view<br>belongs here.</strong><small>Share something you made or a moment you noticed.</small></article>
+      </div>
+      <div class="dashboard-section-title" id="dashboardVideoHeading"><div><div class="eyebrow" id="dashboardSectionEyebrow">YOUR LIBRARY</div><h2 id="dashboardSectionHeading">Your videos</h2></div><button class="button button-small button-dark hidden" id="newPlaylistButton">＋ New playlist</button></div>
+      <div class="dashboard-videos" id="dashboardVideos"></div>
+    </section>
+  </main>
+  <div class="app-toast hidden" id="appToast" role="status" aria-live="polite"></div>
+  <footer class="footer"><a class="brand footer-brand" href="#top"><span class="brand-mark">f</span><span>frame<span class="brand-dot">.</span></span></a><span>A home for stories in motion.</span><span>Made for the moments in between <i>✳</i></span></footer>
+
+  <dialog class="modal" id="authDialog"><button class="modal-close" id="closeAuth" aria-label="Close">×</button><div class="modal-kicker">WELCOME TO FRAME ✳</div><h2 id="authTitle">Good to see you.</h2><p id="authSubtitle">Sign in and pick up where you left off.</p><form id="authForm"><label class="register-only hidden" for="authName">Your name</label><input class="register-only hidden" id="authName" name="name" autocomplete="name" placeholder="Name"><label for="authEmail">Email address</label><input id="authEmail" name="email" type="email" required autocomplete="email" placeholder="you@example.com"><label for="authPassword">Password</label><input id="authPassword" name="password" type="password" required minlength="8" autocomplete="current-password" placeholder="At least 8 characters"><div class="form-error" id="authError"></div><button class="button button-dark modal-submit" type="submit" id="authSubmit">Sign in <span>↗</span></button></form><div class="modal-switch"><span id="switchPrompt">New around here?</span> <button id="switchAuth">Create an account</button></div></dialog>
+
+  <dialog class="modal upload-modal" id="uploadDialog"><button class="modal-close" id="closeUpload" aria-label="Close">×</button><div class="modal-kicker">ADD A LITTLE SOMETHING ✳</div><h2>Share your story.</h2><p>Give your video a title and a few tags so people can find it.</p><form id="uploadForm"><label for="videoTitle">Video title</label><input id="videoTitle" name="title" required maxlength="120" placeholder="A day worth remembering"><label for="videoDescription">A few words <span class="optional">(optional)</span></label><textarea id="videoDescription" name="description" rows="3" placeholder="What should people know about this video?"></textarea><label for="videoTags">Tags <span class="optional">(comma separated)</span></label><input id="videoTags" name="tags" placeholder="travel, nature, everyday"><label class="file-picker" for="videoFile"><span class="file-icon">↑</span><span><strong id="fileName">Choose a video to upload</strong><small>MP4, WebM or MOV · up to 500 MB</small></span><input id="videoFile" name="video" type="file" accept="video/*" required></label><label class="thumbnail-picker" for="thumbnailFile">Add a thumbnail <span class="optional">(optional)</span><input id="thumbnailFile" name="thumbnail" type="file" accept="image/*"></label><div class="form-error" id="uploadError"></div><button class="button button-dark modal-submit" type="submit">Upload video <span>↗</span></button></form></dialog>
+  <dialog class="modal" id="playlistDialog"><button class="modal-close" id="closePlaylist" aria-label="Close">×</button><div class="modal-kicker">MAKE A COLLECTION ✳</div><h2>New playlist.</h2><p>Bring a few videos together in one place.</p><form id="playlistForm"><label for="playlistName">Playlist name</label><input id="playlistName" name="name" required maxlength="80" placeholder="Weekend inspiration"><label for="playlistDescription">Description <span class="optional">(optional)</span></label><textarea id="playlistDescription" name="description" rows="3" placeholder="What are these videos about?"></textarea><div class="form-error" id="playlistError"></div><button class="button button-dark modal-submit" type="submit">Create playlist <span>↗</span></button></form></dialog>
+  <dialog class="modal" id="editVideoDialog"><button class="modal-close" id="closeEditVideo" aria-label="Close">×</button><div class="modal-kicker">YOUR VIDEO ✳</div><h2>Edit video.</h2><p>Update the details people see when they find your video.</p><form id="editVideoForm"><input type="hidden" name="videoId"><label for="editVideoTitle">Video title</label><input id="editVideoTitle" name="title" required maxlength="120"><label for="editVideoDescription">Description</label><textarea id="editVideoDescription" name="description" rows="4" maxlength="5000"></textarea><label for="editVideoTags">Tags <span class="optional">(comma separated)</span></label><input id="editVideoTags" name="tags" maxlength="500"><div class="form-error" id="editVideoError"></div><button class="button button-dark modal-submit" type="submit">Save changes <span>↗</span></button></form></dialog>
+  <dialog class="modal" id="editPlaylistDialog"><button class="modal-close" id="closeEditPlaylist" aria-label="Close">×</button><div class="modal-kicker">YOUR COLLECTION ✳</div><h2>Edit playlist.</h2><form id="editPlaylistForm"><input type="hidden" name="playlistId"><label for="editPlaylistName">Playlist name</label><input id="editPlaylistName" name="name" required maxlength="80"><label for="editPlaylistDescription">Description</label><textarea id="editPlaylistDescription" name="description" rows="3" maxlength="1000"></textarea><div class="form-error" id="editPlaylistError"></div><button class="button button-dark modal-submit" type="submit">Save playlist <span>↗</span></button></form></dialog>
+    <dialog class="modal profile-settings-modal" id="settingsDialog"><button class="modal-close" id="closeSettings" aria-label="Close">×</button><div class="modal-kicker">YOUR PROFILE & ACCOUNT</div><h2>Profile settings.</h2><p>Manage your public profile, account email, and password.</p><form id="settingsForm"><div class="settings-photo-row"><span class="settings-photo-preview" id="settingsPhotoPreview">F</span><div class="settings-photo-copy"><strong>Profile photo</strong><small>JPG, PNG, WebP, GIF, or AVIF · up to 5 MB</small><label class="settings-photo-picker" for="settingsPhoto">Choose photo<input id="settingsPhoto" name="photo" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/avif"></label><button class="settings-remove-photo" id="removeProfilePhoto" type="button">Remove photo</button></div></div><label for="settingsName">Display name</label><input id="settingsName" name="name" required maxlength="80" autocomplete="name"><label for="settingsBio">Creator bio <span class="optional">(shown on your public profile)</span></label><textarea id="settingsBio" name="bio" rows="3" maxlength="1000" placeholder="A little about you or what you create"></textarea><label for="settingsEmail">Email address</label><input id="settingsEmail" name="email" type="email" required autocomplete="email"><div class="settings-id-note">Your user ID: <strong id="settingsUserId">—</strong></div><div class="form-error" id="settingsError"></div><button class="button button-dark modal-submit" type="submit">Save profile settings <span>↗</span></button></form><section class="settings-security"><div class="settings-security-heading"><strong>Password and security</strong><span>Verify your current password before changing it.</span></div><form id="settingsPasswordForm"><label for="settingsCurrentPassword">Current password</label><input id="settingsCurrentPassword" name="currentPassword" type="password" required autocomplete="current-password"><label for="settingsNewPassword">New password <span class="optional">(at least 8 characters)</span></label><input id="settingsNewPassword" name="newPassword" type="password" required minlength="8" autocomplete="new-password"><label for="settingsConfirmPassword">Confirm new password</label><input id="settingsConfirmPassword" name="confirmPassword" type="password" required minlength="8" autocomplete="new-password"><div class="form-error" id="settingsPasswordError"></div><button class="button button-dark modal-submit" type="submit">Change password <span>↗</span></button></form></section></dialog>
+  <dialog class="modal player-modal" id="playerDialog"><button class="modal-close" id="closePlayer" aria-label="Close">×</button><video id="playerVideo" controls playsinline></video><div class="player-actions hidden" id="playerActions"><button class="player-action" id="playerLike">♡ Like</button><button class="player-action" id="playerWatchLater">＋ Watch later</button><select id="playlistSelect" aria-label="Choose a playlist"><option value="">Add to playlist…</option></select><button class="player-action player-action-add" id="addToPlaylist">Add</button><span class="player-action-message" id="playerActionMessage"></span></div><div class="player-info"><div><div class="modal-kicker" id="playerCreator"></div><h2 id="playerTitle"></h2><p id="playerDescription"></p><div class="player-tags" id="playerTags"></div></div></div></dialog>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "akila dhananjaya rathnakaya",
+      "email": "vnilanthi222@gmail.com",
+      "password_hash": "$2a$12$4JcwzqiQzCBnZ3nEO.6ZU.9nL.23LD.Q4f/wlT2fDROMeiElErnFq",
+      "created_at": "2026-11-12T09:08:01.914Z"
+    }
+  ],
+  "videos": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "title": "vvvvvvvvvvvvvvvvvvv",
+      "description": "",
+      "tags": "xrecoder lesson",
+      "video_file": "4319d23b-8740-4f26-b8c6-9975dd3a3240.mp4",
+      "thumbnail_file": null,
+      "created_at": "2026-11-12T09:15:58.505Z",
+      "creator": "akila dhananjaya rathnakaya"
+    },
+    {
+      "id": 2,
+      "user_id": 1,
+      "title": "vvvvvvvvvvvvvvvvvvv",
+      "description": "",
+      "tags": "xrecoder lesson",
+      "video_file": "c35da45d-4113-47f7-9a3a-5d0a6e9cfb90.mp4",
+      "thumbnail_file": null,
+      "created_at": "2026-11-12T09:19:15.117Z",
+      "creator": "akila dhananjaya rathnakaya"
+    }
+  ],
+  "nextUserId": 2,
+  "nextVideoId": 3
+}
